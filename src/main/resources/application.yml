@@ -1,0 +1,11 @@
+server:
+  port: 9999
+
+
+#文档转换路径配置
+doc:
+  convert:
+    docpath: /Users/lujunling/Desktop/doc-convert/tmp/doc/
+
+
+
