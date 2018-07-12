@@ -1,4 +1,9 @@
 package com.niezhiliang.doc.convert.strategys;
 
-public interface DocChange {
+
+import com.niezhiliang.doc.convert.entity.BaseParams;
+
+public interface DocChange<T extends BaseParams> {
+
+    String doJob(T t);
 }
