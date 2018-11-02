@@ -1,11 +1,17 @@
 server:
-  port: 9999
+  port: 10086
 
 
 #文档转换路径配置
 doc:
   convert:
-    docpath: /Users/lujunling/Desktop/doc-convert/tmp/doc/
-
+    docpath: /tmp/
+    imgspath: /tmp/imgs/
+aliyun:
+  oss:
+    accessKeyId: LTAI6Kkmj85nlSPV
+    accessKeySecret: TTPfvLfB6eUU0KwPahT6SoXczgRLGh
+    endpoint: oss-cn-hangzhou.aliyuncs.com
+    bucket: suyublog
 
 

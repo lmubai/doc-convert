@@ -1,19 +1,17 @@
 package com.niezhiliang.doc.convert.utils;
 
-import org.springframework.stereotype.Component;
 
 import java.io.*;
 import java.nio.channels.FileChannel;
 import java.util.Random;
 
-@Component
 public class FileUtil {
 
     /**
      *  随机生成不重复的随机数 时间戳加四位随机数
      * @return
      */
-    public String randomFileName() {
+    public static String randomFileName() {
         return System.currentTimeMillis()+""+(new Random().nextInt(9999)+1000)+"";
     }
 
@@ -21,7 +19,7 @@ public class FileUtil {
      *  随机生成不重复的随机数 时间戳加四位随机数带文件后缀
      * @return
      */
-    public String randomFileName(String suffix) {
+    public static String randomFileName(String suffix) {
         return System.currentTimeMillis()+""+(new Random().nextInt(9999)+1000)+"."+suffix;
     }
 
@@ -31,7 +29,7 @@ public class FileUtil {
      * 判断目录是否存在 不存在创建
      * @param path
      */
-    public void isExists(String path) {
+    public static void isExists(String path) {
         File file = new File(path);
 
         if (!file.exists()) {
@@ -43,7 +41,7 @@ public class FileUtil {
      * 文件删除
      * @param path
      */
-    public void deleteFile(String path) {
+    public static void deleteFile(String path) {
         File file = new File(path);
         if (file.exists()) {
             if (file.isFile()) {
@@ -56,7 +54,7 @@ public class FileUtil {
      * 获取文件名称 带后缀
      * @param path
      */
-    public String getFileName(String path) {
+    public static String getFileName(String path) {
 
         File file =new File( path.trim());
 
@@ -69,7 +67,7 @@ public class FileUtil {
      * @param path
      * @return
      */
-    public  String getFileNameWithoutSuffix(String path){
+    public static String getFileNameWithoutSuffix(String path){
         File file = new File(path);
         String file_name = file.getName();
         return file_name.substring(0, file_name.lastIndexOf("."));
@@ -79,7 +77,7 @@ public class FileUtil {
      * 获取文件后缀 不带点
      * @return
      */
-    public String getFileSuffix(String path) {
+    public static String getFileSuffix(String path) {
         File file = new File(path);
         String fileName=file.getName();
         return fileName.substring(fileName.lastIndexOf(".")+1);
@@ -89,7 +87,7 @@ public class FileUtil {
      * 获取文件后缀 带点
      * @return
      */
-    public String getFileSuffixWithDone(String path) {
+    public static String getFileSuffixWithDone(String path) {
         File file = new File(path);
         String fileName=file.getName();
         return fileName.substring(fileName.lastIndexOf("."));
@@ -100,7 +98,7 @@ public class FileUtil {
      * @param path
      * @return
      */
-    public Long getFileSize(String path) {
+    public static Long getFileSize(String path) {
         File file = new File(path);
         return file.length();
     }
@@ -110,7 +108,7 @@ public class FileUtil {
      * @param sourcePath 源文件路径
      * @param expectPath 目标路径
      */
-    public  void fileChannelCopy(String sourcePath,String expectPath){
+    public static  void fileChannelCopy(String sourcePath,String expectPath){
         FileInputStream fi = null;
         FileOutputStream fo = null;
         FileChannel in = null;

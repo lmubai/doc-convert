@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+  doc-convert:
+     image: huluwa/doc-convert:v1.0.0
+     restart: always
+     container_name: doc-convert
+     hostname: doc-convert
+     build:
+       context: .
+       args:
+         - LANG=C.UTF-8
+     ports:
+       - "10086:10086"
+     volumes:
+       - /tmp:/tmp
+       - /fonts:/usr/share/fonts
+       - /etc/timezone:/etc/timezone
+       - /etc/localtime:/etc/localtime

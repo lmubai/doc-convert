@@ -14,15 +14,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class Doc2PdfStrategyImpl implements DocChange<BaseParams>{
     @Autowired
-    private FileUtil fileUtil;
-    @Autowired
     private FileChangeUtils fileChangeUtils;
     @Value("${doc.convert.docpath}")
     private String docPath;
 
     @Override
     public String doJob(BaseParams baseParams) {
-        String fileName = fileUtil.randomFileName("pdf");
+        String fileName = FileUtil.randomFileName("pdf");
         String pdfPath = docPath+fileName;
 
         fileChangeUtils.doc2pdf(pdfPath,baseParams.getFilepath());
