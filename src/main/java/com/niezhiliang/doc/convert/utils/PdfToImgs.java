@@ -54,9 +54,4 @@ public class PdfToImgs {
         }
         return imgList;
     }
-
-    public static void main(String[] args) {//3326.6
-        int i = 25;
-        System.out.println(i/3);
-    }
 }

@@ -5,12 +5,12 @@ server:
 #文档转换路径配置
 doc:
   convert:
-    docpath: /tmp/
-    imgspath: /tmp/imgs/
+    docpath: /Users/suyu/Desktop/doc-convert/tmp/doc/
+    imgspath: /Users/suyu/Desktop/doc-convert/tmp/imgs/
 aliyun:
   oss:
-    accessKeyId: LTAI6Kkmj85nlSPV
-    accessKeySecret: TTPfvLfB6eUU0KwPahT6SoXczgRLGh
+    accessKeyId:
+    accessKeySecret:
     endpoint: oss-cn-hangzhou.aliyuncs.com
     bucket: suyublog
 

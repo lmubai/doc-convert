@@ -1,5 +1,8 @@
 package com.niezhiliang.doc.convert.utils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.File;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
@@ -10,6 +13,7 @@ import java.util.concurrent.CountDownLatch;
  * @Date 2018/11/2 上午10:32
  */
 public class UploadThread extends Thread {
+    private static final Logger logger = LoggerFactory.getLogger(ConvertThrad.class);
 
     private CountDownLatch countDownLatch;
 
@@ -34,14 +38,20 @@ public class UploadThread extends Thread {
 
     @Override
     public void run() {
-        System.out.println(this.getName() + "子线程上传开始");
-        for (int i = beginNumber; i < endNumber; i++) {
-            String paht =
-                    ossUtil.upload(new File(imgsPath.get(i)),"test"+imgsPath.get(i).replace("/tmp/imgs/",""));
-            ossPath.add(paht);
-            System.out.println("正在上传"+i+"张图片");
+        logger.info(this.getName() + "子线程上传开始");
+        try {
+            for (int i = beginNumber; i < endNumber; i++) {
+                String path = ossUtil.upload(new File(imgsPath.get(i)),ossPath.get(i));
+                ossPath.set(i,path);
+                logger.info("正在上传"+i+"张图片");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            countDownLatch.countDown();
         }
-        countDownLatch.countDown();
-        System.out.println(this.getName() + "子线程上传结束");
+
+
+        logger.info(this.getName() + "子线程上传结束");
     }
 }
